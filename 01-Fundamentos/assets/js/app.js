@@ -33,3 +33,7 @@ console.warn({ b });
 console.error({ c });
 
 // Un metodo recibe argumentos
+
+// Problemas con la inicialización de variables con Var
+var outerWidth = 100000;
+var outerHeight = 600;
