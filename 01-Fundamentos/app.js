@@ -10,13 +10,22 @@ const c = 30;
 
 // c = 20 // no se puede reasignar
 
+let d = 10,
+    e = 20,
+    f = 'Hola ',
+    g = 'Nerm',
+    x = d + e;
 
+
+const saludo = f + g;
+
+f = 'Hola de nuevo';
 
 // Consola Intro
 
-console.log( 'a', a );
+/* console.log( 'a', a );
 console.warn( 'b', b );
-console.error( 'c', c );
+console.error( 'c', c ); */
 
 // Otra manera de mostrarlo
 console.log({ a });
