@@ -32,3 +32,32 @@ const x = 'vivo';
 console.log('Vivo:', personaje[x]);
 
 console.log( 'Última película:', personaje['ultima-pelicula'] );
+
+
+
+/* ============ Más detalles ============ */
+
+// borrar propiedad del array
+delete personaje.edad;
+console.log( personaje );
+
+personaje.casado = true;
+
+const entriesPares = Object.entries( personaje );
+console.log( entriesPares );
+
+Object.freeze( personaje );
+
+personaje.dinero = 10000000;
+personaje.casado = false;
+// Object.freeze( personaje.direccion )
+personaje.direccion.ubicacion = 'Honduras';
+console.log( personaje );
+
+// Metodo para obtener las propiedades del arreglo
+const propiedades = Object.getOwnPropertyNames ( personaje );
+console.log({ propiedades });
+
+// Metodo para obtener los valores del arreglo
+const valores = Object.values ( personaje );
+console.log({ valores });
