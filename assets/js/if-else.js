@@ -36,3 +36,21 @@ if ( dia === 0 ) {
     console.log('No es lunes, ni martes, ni domingo');
 }
 
+// Sin usar If Else, o Switch, unicamente objetos
+
+let diaSemana = [
+    'Domingo',
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sábado',
+];
+
+dia = 7; // 0: Domingo; 1: Lunes; 2: Martes...
+
+// día de la semana
+console.log('El día es: ', diaSemana[dia] || 'no valido');
+
+
