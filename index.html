@@ -3,14 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript | Intro</title>
+    <title>Blackjack</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
 </head>
 <body>
-    
-    <h1>Javascript Moderno</h1>
-    <hr>
+    <header class="titulo">Blackjack</header>
 
-    <!-- El lugar de las importaciones importa -->
-    <script src="./assets/js/ciclos/for.js"></script>
+    <div class="row mt-2">
+        <div class="col text-center">
+            <button class="btn btn-danger">Nuevo juego</button>
+            <button class="btn btn-primary">Pedir carta</button>
+            <button class="btn btn-primary">Detener</button>
+        </div>
+    </div>
+
+    <div class="row rontainer">
+        <div class="col">
+            <h1>Jugador 1 - <small>0</small></h1>
+            <div id="jugador-cartas">
+                <img class="carta" src="assets/images/cartas/10H.png" alt="10DH">
+                <img class="carta" src="assets/images/cartas/10H.png" alt="10DH">
+                <img class="carta" src="assets/images/cartas/10H.png" alt="10DH">
+                <img class="carta" src="assets/images/cartas/10H.png" alt="10DH">
+            </div>
+        </div>
+    </div>
+
+    <div class="row rontainer mt-2">
+        <div class="col">
+            <h1>Computadora - <small>0</small></h1>
+            <div id="computadora-cartas">
+                <img class="carta" src="assets/images/cartas/10H.png" alt="10DH">
+                <img class="carta" src="assets/images/cartas/10H.png" alt="10DH">
+                <img class="carta" src="assets/images/cartas/10H.png" alt="10DH">
+                <img class="carta" src="assets/images/cartas/10H.png" alt="10DH">
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/juego.js"></script>
 </body>
 </html>
