@@ -14,9 +14,10 @@ let puntosJugador = 0,
 // Referencias del HTML
 const btnPedir = document.querySelector('#btnPedir');
 const btnStop = document.querySelector('#btnDetener');
+const btnNuevoJuego = document.querySelector('#btnNuevo');
 const aumentarPuntos = document.querySelectorAll('small');
 const jugadorCartas = document.querySelector('#jugador-cartas');
-const ComputadoraCartas = document.querySelector('#computadora-cartas');
+const computadoraCartas = document.querySelector('#computadora-cartas');
 
 // Esta funcion crea nueva baraja
 const crearDeck = () => {
@@ -71,13 +72,18 @@ const turnoComputadora = ( puntosMinimos ) => {
         const imgCarta = document.createElement('img');
         imgCarta.src = `assets/images/cartas/${ carta }.png`;
         imgCarta.classList.add('carta');
-        ComputadoraCartas.append( imgCarta );
+        computadoraCartas.append( imgCarta );
 
         if ( puntosMinimos > 21 ) {
             break;
         }
         
     } while ( (puntosComputadora < puntosMinimos) && ( puntosMinimos <= 21 ) );
+
+    setTimeout(() => {
+        alertaJuego = ( puntosMinimos === puntosComputadora ) ? alert('Nadie gana') :
+                                                            ( puntosMinimos > 21 ) ? alert('Computadora gana') : ( puntosComputadora > 21 ) ? alert('Felicidades, usted ha ganado') : alert('Computadora gana');
+    }, 15);
 }
 
 
@@ -98,7 +104,6 @@ btnPedir.addEventListener('click', ()=>{
 
 
     if ( puntosJugador > 21 ) {
-        console.warn('Has perdido, juega de nuevo!');
         btnPedir.disabled = true;
         btnStop.disabled = true;
         turnoComputadora( puntosJugador );
@@ -107,7 +112,6 @@ btnPedir.addEventListener('click', ()=>{
         jugadorCartas.append( imgCarta );
         btnPedir.disabled = true;
         btnStop.disabled = true;
-        alert('Has ganado. Felicidades!');
         turnoComputadora( puntosJugador );
     }
 
@@ -118,3 +122,20 @@ btnStop.addEventListener('click', ()=>{
     btnStop.disabled = true;
     turnoComputadora( puntosJugador );
 });
+
+btnNuevoJuego.addEventListener('click', () => {
+    deck = [];
+    deck = crearDeck();
+
+    puntosJugador = 0;
+    puntosComputadora = 0;
+
+    aumentarPuntos[0].innerText = 0;
+    aumentarPuntos[1].innerText = 0;
+
+    jugadorCartas.innerHTML = '';
+    computadoraCartas.innerHTML = '';
+
+    btnPedir.disabled = false;
+    btnStop.disabled = false;
+})
