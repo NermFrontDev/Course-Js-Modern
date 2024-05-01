@@ -8,6 +8,12 @@
 let deck         = [];
 const tipos      = ['C', 'D', 'H', 'S'];
 const especiales = ['A', 'J', 'Q', 'K'];
+let puntosJugador = 0,
+    puntosComputadora = 0;
+
+// Referencias del HTML
+const btnPedir = document.querySelector('#btnPedir');
+const aumentarPuntosJugador = document.querySelectorAll('small');
 
 // Esta funcion crea nueva baraja
 const crearDeck = () => {
@@ -25,10 +31,7 @@ const crearDeck = () => {
 
     deck = deck.sort( () => 0.5 - Math.random() );
     // deck = _.shuffle( deck );
-    console.log( deck );
     return deck;
-
-
 }
 
 crearDeck();
@@ -39,11 +42,7 @@ const pedirCarta = () => {
     if (deck.length === 0) {
         throw 'No hay cartas en el deck';
     }
-    
     const carta = deck.pop();
-
-    console.log(deck);
-    console.log(carta); // carta debe ser de la baraja
     return carta;
 }
 
@@ -57,5 +56,18 @@ const valorCarta = ( carta ) => {
             : valor * 1;
 }
 
-const valor = valorCarta('AD');
-console.log({ valor });
+
+// Eventos
+
+// Función que se manda a llamar a otra, se le llama callback
+btnPedir.addEventListener('click', ()=>{
+    
+    const carta = pedirCarta();
+
+    puntosJugador = puntosJugador + valorCarta( carta );
+
+    aumentarPuntosJugador[0].innerText = puntosJugador;
+
+    console.log( puntosJugador );
+
+});
