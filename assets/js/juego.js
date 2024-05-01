@@ -14,6 +14,7 @@ let puntosJugador = 0,
 // Referencias del HTML
 const btnPedir = document.querySelector('#btnPedir');
 const aumentarPuntosJugador = document.querySelectorAll('small');
+const jugadorCartas = document.querySelector('#jugador-cartas');
 
 // Esta funcion crea nueva baraja
 const crearDeck = () => {
@@ -65,9 +66,20 @@ btnPedir.addEventListener('click', ()=>{
     const carta = pedirCarta();
 
     puntosJugador = puntosJugador + valorCarta( carta );
-
     aumentarPuntosJugador[0].innerText = puntosJugador;
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/images/cartas/${ carta }.png`;
+    imgCarta.classList.add('carta');
+    jugadorCartas.append( imgCarta );
 
-    console.log( puntosJugador );
+
+    if ( puntosJugador > 21 ) {
+        console.warn('Has perdido, juega de nuevo!');
+        btnPedir.disabled = true;
+    } else if ( puntosJugador === 21 ) {
+        jugadorCartas.append( imgCarta );
+        btnPedir.disabled = true;
+        alert('Has ganado. Felicidades!');
+    }
 
 });
