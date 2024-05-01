@@ -13,8 +13,10 @@ let puntosJugador = 0,
 
 // Referencias del HTML
 const btnPedir = document.querySelector('#btnPedir');
-const aumentarPuntosJugador = document.querySelectorAll('small');
+const btnStop = document.querySelector('#btnDetener');
+const aumentarPuntos = document.querySelectorAll('small');
 const jugadorCartas = document.querySelector('#jugador-cartas');
+const ComputadoraCartas = document.querySelector('#computadora-cartas');
 
 // Esta funcion crea nueva baraja
 const crearDeck = () => {
@@ -58,6 +60,28 @@ const valorCarta = ( carta ) => {
 }
 
 
+// Turno de la computadora
+
+const turnoComputadora = ( puntosMinimos ) => {
+    do {
+        const carta = pedirCarta();
+    
+        puntosComputadora = puntosComputadora + valorCarta( carta );
+        aumentarPuntos[1].innerText = puntosComputadora;
+        const imgCarta = document.createElement('img');
+        imgCarta.src = `assets/images/cartas/${ carta }.png`;
+        imgCarta.classList.add('carta');
+        ComputadoraCartas.append( imgCarta );
+
+        if ( puntosMinimos > 21 ) {
+            break;
+        }
+        
+    } while ( (puntosComputadora < puntosMinimos) && ( puntosMinimos <= 21 ) );
+}
+
+
+
 // Eventos
 
 // Función que se manda a llamar a otra, se le llama callback
@@ -66,7 +90,7 @@ btnPedir.addEventListener('click', ()=>{
     const carta = pedirCarta();
 
     puntosJugador = puntosJugador + valorCarta( carta );
-    aumentarPuntosJugador[0].innerText = puntosJugador;
+    aumentarPuntos[0].innerText = puntosJugador;
     const imgCarta = document.createElement('img');
     imgCarta.src = `assets/images/cartas/${ carta }.png`;
     imgCarta.classList.add('carta');
@@ -76,10 +100,21 @@ btnPedir.addEventListener('click', ()=>{
     if ( puntosJugador > 21 ) {
         console.warn('Has perdido, juega de nuevo!');
         btnPedir.disabled = true;
+        btnStop.disabled = true;
+        turnoComputadora( puntosJugador );
+
     } else if ( puntosJugador === 21 ) {
         jugadorCartas.append( imgCarta );
         btnPedir.disabled = true;
+        btnStop.disabled = true;
         alert('Has ganado. Felicidades!');
+        turnoComputadora( puntosJugador );
     }
 
+});
+
+btnStop.addEventListener('click', ()=>{
+    btnPedir.disabled = true;
+    btnStop.disabled = true;
+    turnoComputadora( puntosJugador );
 });
