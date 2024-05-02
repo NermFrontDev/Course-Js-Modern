@@ -4,21 +4,34 @@
 (() => {
 
     let deck         = [];
-    const tipos      = ['C', 'D', 'H', 'S'];
-    const especiales = ['A', 'J', 'Q', 'K'];
-    let puntosJugador = 0,
-        puntosComputadora = 0;
+    const tipos      = ['C', 'D', 'H', 'S'],
+            especiales = ['A', 'J', 'Q', 'K'];
+    
+    let puntosJugadores = [];
     
     // Referencias del HTML
-    const btnPedir = document.querySelector('#btnPedir');
-    const btnStop = document.querySelector('#btnDetener');
-    const btnNuevoJuego = document.querySelector('#btnNuevo');
-    const aumentarPuntos = document.querySelectorAll('small');
-    const jugadorCartas = document.querySelector('#jugador-cartas');
-    const computadoraCartas = document.querySelector('#computadora-cartas');
+    const btnPedir = document.querySelector('#btnPedir'),
+            btnStop = document.querySelector('#btnDetener'),
+            btnNuevoJuego = document.querySelector('#btnNuevo');
+
+    const aumentarPuntos = document.querySelectorAll('small'),
+            jugadorCartas = document.querySelector('#jugador-cartas'),
+            computadoraCartas = document.querySelector('#computadora-cartas');
+
+    // Inicializa el juego
+    const inicializarJuego = ( numJugadores = 2 ) => {
+        deck = crearDeck();
+        for (let i = 0; i < numJugadores; i++) {
+            puntosJugadores.push(0);
+            
+        }
+    }
     
     // Esta funcion crea nueva baraja
     const crearDeck = () => {
+
+        deck = [];
+
         for (let i = 2; i <= 10; i++) {
             for( let tipo of tipos ) {
                 deck.push( i + tipo );
@@ -44,7 +57,7 @@
         if (deck.length === 0) {
             throw 'No hay cartas en el deck';
         }
-        const carta = deck.pop();
+        deck.pop();
         return carta;
     }
     
@@ -58,9 +71,11 @@
                 : valor * 1;
     }
     
+    const acumularPuntos = () => {
+
+    }
     
     // Turno de la computadora
-    
     const turnoComputadora = ( puntosMinimos ) => {
         do {
             const carta = pedirCarta();
