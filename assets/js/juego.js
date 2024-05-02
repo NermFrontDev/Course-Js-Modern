@@ -149,7 +149,7 @@ const miModulo = (() => {
     btnStop.addEventListener('click', ()=>{
         btnPedir.disabled = true;
         btnStop.disabled = true;
-        turnoComputadora( puntosJugador );
+        turnoComputadora( puntosJugadores[0] );
     });
     
     btnNuevoJuego.addEventListener('click', () => {
