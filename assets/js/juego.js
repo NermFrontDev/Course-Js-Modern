@@ -138,7 +138,6 @@ const miModulo = (() => {
             turnoComputadora( puntosJugador );
     
         } else if ( puntosJugador === 21 ) {
-            jugadorCartas.append( imgCarta );
             btnPedir.disabled = true;
             btnStop.disabled = true;
             turnoComputadora( puntosJugador );
