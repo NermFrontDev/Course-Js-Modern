@@ -1,5 +1,4 @@
 
-
 class Persona {
 
     static _conteo = 0;
@@ -47,23 +46,23 @@ class Persona {
     }
 }
 
+class Heroe extends Persona{
+
+    clan = 'Sin clan';
+
+    constructor( nombre, codigo, frase ) {
+        super( nombre, codigo, frase );
+
+        this.clan = 'Avengers';
+    }
+
+    quienSoy() {
+        console.log( `Soy ${ this.nombre }, ${ this.clan }` );
+        super.quienSoy();
+    }
+}
+
 // La palabra reservada 'new' indica a Js que se crea una nueva instancia
-const spiderpapu = new Persona( 'Peterpapu', 'Spiderpapu', 'Spiderpapu al rescate!! mmm uaah!' );
-const ironman = new Persona( 'Tony Stark', 'Ironman', 'Yo soy Ironman' );
-// console.log( ironman );
-
-spiderpapu.quienSoy();
-spiderpapu.miFrase();
-
-spiderpapu.comida = 'El pie de cereza de la tía May';
-// spiderpapu.comida = 'Duende Verde';
-console.log( spiderpapu.getComidaFavorita );
-
-// console.log( spiderpapu );
-
-// Persona._conteo = 2;
-console.log('Conteo estático:', Persona._conteo);
-console.log( Persona.getConteo );
-Persona.propExterna = 'Hola mundo';
-console.log( Persona.propExterna );
-console.log( Persona );
+const spiderpapu = new Heroe( 'Peterpapu', 'Spiderpapu', 'Spiderpapu al rescate!! mmm uaah!' );
+// const spiderpapu = new Heroe();
+console.log(spiderpapu);
