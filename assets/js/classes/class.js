@@ -1,6 +1,17 @@
 
 
 class Persona {
+
+    static _conteo = 0;
+    static get getConteo () {
+        return Persona._conteo + ' instancias';
+    }
+
+    static mensaje() {
+        console.log( this.nombre ); // undefined
+        console.log( 'Hola a todos, soy un método estático' );
+    }
+
     // Propiedades de la clase:
     nombre = '';
     codigo = '';
@@ -14,6 +25,8 @@ class Persona {
         this.nombre = nombre;
         this.codigo = codigo;
         this.frase = frase;
+
+        Persona._conteo++;
     }
 
     set setComidaFavorita ( comida ) {
@@ -46,4 +59,12 @@ spiderpapu.comida = 'El pie de cereza de la tía May';
 // spiderpapu.comida = 'Duende Verde';
 console.log( spiderpapu.getComidaFavorita );
 
-console.log( spiderpapu );
+// console.log( spiderpapu );
+
+// Persona._conteo = 2;
+console.log('Conteo estático:', Persona._conteo);
+console.log( Persona.getConteo );
+
+Persona.propExterna = 'Hola mundo';
+console.log( Persona.propExterna );
+console.log( Persona );
