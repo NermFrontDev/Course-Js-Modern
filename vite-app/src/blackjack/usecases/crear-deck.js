@@ -1,8 +1,9 @@
 import _ from 'underscore';
 
-
 // Esta función crea un nuevo deck
 export const crearDeck = (tiposDeCarta, tiposEspeciales) => {
+
+    let deck = [];
 
     for( let i = 2; i <= 10; i++ ) {
         for( let tipo of tiposDeCarta ) {
@@ -20,3 +21,5 @@ export const crearDeck = (tiposDeCarta, tiposEspeciales) => {
 
     return deck;
 }
+
+// export default crearDeck;

@@ -1,5 +1,6 @@
 import _ from 'underscore';
 
+// import { crearDeck as nuevoDeck } from './usecases/crear-deck';
 import { crearDeck } from './usecases/crear-deck';
 
 /**
@@ -26,7 +27,7 @@ const divCartasComputadora = document.querySelector('#computadora-cartas');
 
 const puntosHTML = document.querySelectorAll('small');
 
-crearDeck();
+deck = crearDeck( tipos, especiales );
 
 
 // Esta función me permite tomar una carta
@@ -59,7 +60,7 @@ const turnoComputadora = ( puntosMinimos ) => {
         
         // <img class="carta" src="assets/cartas/2C.png">
         const imgCarta = document.createElement('img');
-        imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
+        imgCarta.src = `/assets/cartas/${ carta }.png`; //3H, JD
         imgCarta.classList.add('carta');
         divCartasComputadora.append( imgCarta );
 
@@ -94,7 +95,7 @@ btnPedir.addEventListener('click', () => {
     
     // <img class="carta" src="assets/cartas/2C.png">
     const imgCarta = document.createElement('img');
-    imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
+    imgCarta.src = `/assets/cartas/${ carta }.png`; //3H, JD
     imgCarta.classList.add('carta');
     divCartasJugador.append( imgCarta );
 
@@ -124,8 +125,7 @@ btnDetener.addEventListener('click', () => {
 btnNuevo.addEventListener('click', () => {
 
     console.clear();
-    deck = [];
-    deck = crearDeck();
+    deck = crearDeck( tipos, especiales );
 
     puntosJugador     = 0;
     puntosComputadora = 0;
