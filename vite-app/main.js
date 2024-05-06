@@ -77,9 +77,9 @@ const turnoComputadora = ( puntosMinimos ) => {
         puntosComputadora = puntosComputadora + valorCarta( carta );
         puntosHTML[1].innerText = puntosComputadora;
         
-        // <img class="carta" src="public/cartas/2C.png">
+        // <img class="carta" src="assets/cartas/2C.png">
         const imgCarta = document.createElement('img');
-        imgCarta.src = `public/cartas/${ carta }.png`; //3H, JD
+        imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
         imgCarta.classList.add('carta');
         divCartasComputadora.append( imgCarta );
 
@@ -112,9 +112,9 @@ btnPedir.addEventListener('click', () => {
     puntosJugador = puntosJugador + valorCarta( carta );
     puntosHTML[0].innerText = puntosJugador;
     
-    // <img class="carta" src="public/cartas/2C.png">
+    // <img class="carta" src="assets/cartas/2C.png">
     const imgCarta = document.createElement('img');
-    imgCarta.src = `public/cartas/${ carta }.png`; //3H, JD
+    imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
     imgCarta.classList.add('carta');
     divCartasJugador.append( imgCarta );
 
