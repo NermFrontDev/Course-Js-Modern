@@ -1,2 +1,3 @@
-import './src/blackjack/index';
 import './style.css';
+
+console.log('Hola mundo!');
