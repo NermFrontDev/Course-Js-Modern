@@ -37,6 +37,10 @@ const saveStateToLocalStorage = () => {
 
 }
 
+export const removeLocalStorage = () => {
+    localStorage.removeItem('state', state)
+}
+
 const getTodos = ( filter = Filters.All ) => {
     switch ( filter ) {
         case Filters.All:
@@ -112,4 +116,5 @@ export default {
     loadStore,
     setFilter,
     toggleTodo,
+    removeLocalStorage,
 }

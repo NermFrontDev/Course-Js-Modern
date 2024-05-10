@@ -8,6 +8,7 @@ const elementIDs = {
     ClearCompleted: '.clear-completed',
     TodoFilters: '.filtro',
     PendingCount: '#pending-count',
+    DeleteStorage: '#btn-delete-storage',
 }
 
 /**
@@ -40,6 +41,7 @@ export const App = ( elementId ) => {
     const todoListUL = document.querySelector( elementIDs.TodoList );
     const removeCompleted = document.querySelector( elementIDs.ClearCompleted );
     const filtersLIs = document.querySelectorAll( elementIDs.TodoFilters );
+    const removeLocalStorage = document.querySelector( elementIDs.DeleteStorage );
 
     // Listeners
 
@@ -98,6 +100,11 @@ export const App = ( elementId ) => {
 
         });
     });
+
+    removeLocalStorage.addEventListener('click', () => {
+        todoStore.removeLocalStorage();
+        displayTodos();
+    })
 
 
 
