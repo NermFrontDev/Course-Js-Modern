@@ -1,7 +1,7 @@
 import { Todo } from "../todos/models/todo.model";
 
 export const Filters = {
-    All: 'All',
+    All: 'all',
     Completed: 'Completed',
     Pending: 'Pending'
 }
@@ -45,11 +45,11 @@ const getTodos = ( filter = Filters.All ) => {
     
         case Filters.Completed:
 
-            return state.filter( todo => todo.done );
+            return state.todos.filter( todo => todo.done );
         
         case Filters.Pending:
 
-            return state.filter( todo => !todo.done );
+            return state.todos.filter( todo => !todo.done );
 
         default:
             throw new Error(`Option ${ filter } is not valid.`);
