@@ -14,15 +14,29 @@ export const promiseComponent = ( element ) => {
         element.innerHTML = hero.name;
     }
 
+    const renderTwoHeroes = ( hero1, hero2 ) => {
+        element.innerHTML = `
+            <h3>${ hero1.name }</h3>
+            <h3>${ hero2.name }</h3>
+        `
+    }
+
     const renderError = (error) => {
         element.innerHTML = `
             <h3>${error}</h3>
         `;
     }
     
+    // Promise Hell
     findHero( hero1 )
-    .then( superHero => renderHero( superHero ) )
-    .catch( error => renderError(error) );
+    .then( (id1) => {
+            findHero( hero2 )
+                .then (id2 => {
+                    renderTwoHeroes(id1, id2);
+                })
+                .catch( renderError);
+    } )
+    .catch( renderError);
     
 }
 
