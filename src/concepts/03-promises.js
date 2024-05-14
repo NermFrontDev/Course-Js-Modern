@@ -8,7 +8,7 @@ import {heroes} from '../data/heroes';
 export const promiseComponent = ( element ) => {
 
     const hero1 = '5d86371fd55e2e2a30fe1cc3';
-    const hero2 = '5d86371fd55e2e2a30fe1ccb';
+    const hero2 = '5d86371f25a058e5b1c8a65e';
 
     const renderHero = ( hero ) => {
         element.innerHTML = hero.name;
@@ -26,17 +26,38 @@ export const promiseComponent = ( element ) => {
             <h3>${error}</h3>
         `;
     }
+
     
+    //! Promise.all([])
+    Promise.all([
+        findHero(hero1),
+        findHero(hero2)
+    ])
+    .then(([id1, id2]) => renderTwoHeroes( id1, id2 ))
+    .catch( renderError )
+
+    //! Forma 2
+    // let id1;
+    // findHero(hero1)
+    //     .then( hero => {
+    //         id1 = hero;
+    //         return findHero(hero2);
+    //     }).then( id2 => {
+    //         renderTwoHeroes( id1, id2 );
+    //     })
+    //     .catch( renderError );
+    
+    //! Forma 1
     // Promise Hell
-    findHero( hero1 )
-    .then( (id1) => {
-            findHero( hero2 )
-                .then (id2 => {
-                    renderTwoHeroes(id1, id2);
-                })
-                .catch( renderError);
-    } )
-    .catch( renderError);
+    // findHero( hero1 )
+    // .then( (id1) => {
+    //         findHero( hero2 )
+    //             .then (id2 => {
+    //                 renderTwoHeroes(id1, id2);
+    //             })
+    //             .catch( renderError);
+    // } )
+    // .catch( renderError);
     
 }
 
