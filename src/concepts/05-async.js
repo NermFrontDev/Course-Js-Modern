@@ -10,7 +10,7 @@ export const asyncComponent = ( element ) => {
     
     findHero( id1 )
         .then( name => element.innerHTML = name )
-    
+        .catch( error => element.innerHTML = error )
 }
 
 /**
@@ -20,6 +20,10 @@ export const asyncComponent = ( element ) => {
  */
 const findHero = async ( id ) => {
     const hero = heroes.find( hero => hero.id === id );
+
+    // Manejo de errores en funciones async
+    if(!hero)
+        throw`Hero with id ${ id } is not found`
 
     return hero.name;
 }
