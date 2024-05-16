@@ -22,7 +22,21 @@ export const RickyMortyApp = async ( element ) => {
 
     document.querySelector('#app-title').innerHTML = 'Ricky N Morty API';
     element.innerHTML = 'Loading...';
-    const character = await fetchCharacter();
-    element.innerHTML = 'Tenemos data!';
+
+    // const character = await fetchCharacter();
+
+    const characterLabel = document.createElement('h3');
+    const specieLabel = document.createElement('p');
+    const nextCharacterBtn = document.createElement('button');
+    nextCharacterBtn.innerText = ('Next Character');
+
+    const renderCharacter = ( data ) => {
+        characterLabel.innerHTML = data.name;
+        specieLabel.innerHTML = `I'm a ${data.species}`;
+        element.replaceChildren( characterLabel, specieLabel, nextCharacterBtn )
+    }
+
+    fetchCharacter()
+        .then( renderCharacter );
 
 }
