@@ -1,8 +1,7 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
-import { RickyMortyApp } from './src/ricky-morty/ricky-morty-app'
-import imgApi from "./public/api-logo.svg";
+import { setupCounter } from './counter.js'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -12,16 +11,14 @@ document.querySelector('#app').innerHTML = `
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${imgApi}" class="logo api" alt="Api logo" />
-    </a>
-    <h1 id="app-title">Hello Vite!</h1>
+    <h1>Hello Vite!</h1>
     <div class="card">
-
+      <button id="counter" type="button"></button>
     </div>
+    <p class="read-the-docs">
+      Click on the Vite logo to learn more
+    </p>
   </div>
-`;
+`
 
-const element = document.querySelector('.card');
-
-RickyMortyApp(element);
+setupCounter(document.querySelector('#counter'))
